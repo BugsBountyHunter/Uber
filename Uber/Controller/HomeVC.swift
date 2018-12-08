@@ -7,14 +7,20 @@
 //
 
 import UIKit
+import MapKit
 
 class HomeVC: UIViewController {
-
+    //MARK:- outlets
+    @IBOutlet weak var mapView: MKMapView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+    mapView.delegate = self
     }
 
 
 }
 
+extension HomeVC:MKMapViewDelegate{
+    
+}
