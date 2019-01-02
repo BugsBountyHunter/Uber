@@ -11,3 +11,4 @@ import Foundation
 // VC Identifier
 let LEFT_SIDE_PANEL_VC = "leftSidePanelVC"
 let HOME_VC = "HomeVC"
+let LOGIN_VC = "loginVC"

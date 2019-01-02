@@ -49,14 +49,16 @@ class RoundedShadowButton: UIButton {
                 // make button like circle
                 self.layer.cornerRadius = self.frame.height / 2
                 self.frame = CGRect(x: self.frame.midX  - (self.frame.height / 2 ), y: self.frame.origin.y , width: self.frame.height, height: self.frame.height)
-            }) { (finished) in
+            }) { [weak self](finished) in
+                guard let self = self else{return}
                 if finished == true {
                     spinner.startAnimating()
                     spinner.center = CGPoint(x: (self.frame.width / 2) + 1, y: self.frame.width / 2 + 1 )
-                   // spinner.fadeTo(alphaValue: 1.0, withDuration: 0.2)
-                    UIView.animate(withDuration: 0.1, animations: {
-                        spinner.alpha = 1.0
-                    })
+//                   // spinner.fadeTo(alphaValue: 1.0, withDuration: 0.2)
+//                    UIView.animate(withDuration: 0.1, animations: {
+//                        spinner.alpha = 1.0
+//                    })
+                   self.fadeTo(alphaValue: 1.0, timeDuration: 0.2)
                 }
             }
             self.isUserInteractionEnabled = false
