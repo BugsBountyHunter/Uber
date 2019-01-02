@@ -13,7 +13,7 @@
         <!--HomeVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="HomeVC" customModule="Uber" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeVC" id="BYZ-38-t0r" customClass="HomeVC" customModule="Uber" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" userLabel="Main View">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -30,6 +30,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JKm-bN-1aE">
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="50"/>
                                                 <state key="normal" image="menuSliderBtn"/>
+                                                <connections>
+                                                    <action selector="leftMenuBtnWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tbI-Of-19D"/>
+                                                </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="obV-PO-Zow" userLabel="Logo">
                                                 <rect key="frame" x="145" y="0.0" width="94" height="50"/>
@@ -200,13 +203,103 @@
                         <viewLayoutGuide key="safeArea" id="Qdi-Tt-gmG"/>
                     </view>
                     <connections>
+                        <outlet property="currentLocationBtn" destination="wDu-Jr-oBJ" id="dB2-pT-cfG"/>
                         <outlet property="mapView" destination="3ej-1w-3SH" id="j0f-Kb-Kye"/>
+                        <outlet property="profileImge" destination="ZKY-ai-ack" id="eWT-07-M5A"/>
                         <outlet property="requestBtn" destination="RLO-8I-b4J" id="p1v-W0-8o2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-168.11594202898553" y="24.776785714285712"/>
+        </scene>
+        <!--Left Side PanelVC-->
+        <scene sceneID="Mcz-7B-e3c">
+            <objects>
+                <viewController storyboardIdentifier="leftSidePanelVC" id="vgU-Gh-Lz9" customClass="LeftSidePanelVC" customModule="Uber" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rZd-wj-BqA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IJW-64-4dW">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MENU" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTJ-WH-4xM">
+                                        <rect key="frame" x="15" y="51" width="95.333333333333329" height="41"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="30"/>
+                                        <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="dTJ-WH-4xM" firstAttribute="leading" secondItem="IJW-64-4dW" secondAttribute="leading" constant="15" id="6Uz-kq-5un"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dTJ-WH-4xM" secondAttribute="trailing" constant="20" symbolic="YES" id="Kz9-tA-XGa"/>
+                                    <constraint firstAttribute="bottom" secondItem="dTJ-WH-4xM" secondAttribute="bottom" constant="8" id="cmw-FL-m74"/>
+                                    <constraint firstAttribute="height" constant="100" id="okR-eZ-h19"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uCj-cQ-dnH">
+                                <rect key="frame" x="15" y="120" width="129" height="188"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="99h-81-eId">
+                                        <rect key="frame" x="0.0" y="0.0" width="129" height="47"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="25"/>
+                                        <state key="normal" title="Payment">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jog-Wy-MnC">
+                                        <rect key="frame" x="0.0" y="47" width="129" height="47"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="25"/>
+                                        <state key="normal" title="Your Trips">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d0d-p7-x4F">
+                                        <rect key="frame" x="0.0" y="94" width="129" height="47"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="25"/>
+                                        <state key="normal" title="Help">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BK0-8M-POc">
+                                        <rect key="frame" x="0.0" y="141" width="129" height="47"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="25"/>
+                                        <state key="normal" title="Settings">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJR-Ki-91k">
+                                <rect key="frame" x="15" y="816" width="163" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="CLt-gD-C8b"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="20"/>
+                                <state key="normal" title="Sign Up / Login ">
+                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="zxd-j7-ufn" firstAttribute="trailing" secondItem="SJR-Ki-91k" secondAttribute="trailing" constant="236" id="6gw-r1-CM8"/>
+                            <constraint firstItem="zxd-j7-ufn" firstAttribute="trailing" secondItem="IJW-64-4dW" secondAttribute="trailing" id="DtQ-vU-cTB"/>
+                            <constraint firstItem="IJW-64-4dW" firstAttribute="leading" secondItem="zxd-j7-ufn" secondAttribute="leading" id="FTW-pe-ZYC"/>
+                            <constraint firstItem="IJW-64-4dW" firstAttribute="top" secondItem="rZd-wj-BqA" secondAttribute="top" id="IOP-CL-0YD"/>
+                            <constraint firstItem="SJR-Ki-91k" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zxd-j7-ufn" secondAttribute="leading" id="OXZ-Bc-TK4"/>
+                            <constraint firstAttribute="bottom" secondItem="SJR-Ki-91k" secondAttribute="bottom" constant="30" id="Q99-WQ-Uz2"/>
+                            <constraint firstItem="uCj-cQ-dnH" firstAttribute="top" secondItem="IJW-64-4dW" secondAttribute="bottom" constant="20" id="TFU-nb-2qf"/>
+                            <constraint firstItem="uCj-cQ-dnH" firstAttribute="leading" secondItem="zxd-j7-ufn" secondAttribute="leading" constant="15" id="xsb-Pi-enN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zxd-j7-ufn"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ntm-gD-MOa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="573.91304347826087" y="30.803571428571427"/>
         </scene>
     </scenes>
     <resources>

@@ -13,6 +13,11 @@ class HomeVC: UIViewController {
     //MARK:- outlets
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var requestBtn: RoundedShadowButton!
+    @IBOutlet weak var currentLocationBtn: UIButton!
+    @IBOutlet weak var profileImge: CircleImage!
+    
+    //MARK:- Properties
+    var delegate:CenterVCDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +27,11 @@ class HomeVC: UIViewController {
     //MARK:- Action
     @IBAction func requestRiadBtnWasPressed(_ sender: Any) {
        requestBtn.animateButton(shouldLoad: true)
+    }
+    @IBAction func leftMenuBtnWasPressed(_ sender: Any) {
+//        delegate?.animateLeftPanel(shouldExpand: true)
+        delegate?.toggleLeftPanel()
+        
     }
     
 }
